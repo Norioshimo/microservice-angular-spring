@@ -1,0 +1,59 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: usuario-service
+              uri: lb://usuario-service
+              predicates:
+                - Path=/api/usuario/**
+
+            - id: curso-service
+              uri: lb://curso-service
+              predicates:
+                - Path=/api/curso/**
+
+            - id: examen-service
+              uri: lb://examen-service
+              predicates:
+                - Path=/api/examen/**
+
+            - id: respuesta-service
+              uri: lb://respuesta-service
+              predicates:
+                - Path=/api/respuesta/**
+
+            - id: discovery-service
+              uri: http://localhost:8761
+              predicates:
+                - Path=/eureka/web
+              filters:
+                - SetPath=/
+
+            - id: discovery-service-static
+              uri: http://localhost:8761
+              predicates:
+                - Path=/eureka/**
+logging:
+  level:
+    io.micrometer.tracing: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web: DEBUG
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+
+
