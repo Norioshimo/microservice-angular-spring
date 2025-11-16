@@ -8,7 +8,7 @@
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre"
-                    class="form-control" [(ngModel)]="alumno.nombre">
+                    class="form-control" [(ngModel)]="model.nombre">
                 <div class="alert alert-danger"
                     *ngIf="error?.nombre">{{error.nombre}}</div>
             </div>
@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label for="apellido">Apellido</label>
                 <input type="text" id="apellido" name="apellido"
-                    class="form-control" [(ngModel)]="alumno.apellido">
+                    class="form-control" [(ngModel)]="model.apellido">
                 <div class="alert alert-danger"
                     *ngIf="error?.apellido">{{error.apellido}}</div>
             </div>
@@ -24,14 +24,14 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" class="form-control"
-                    [(ngModel)]="alumno.email">
+                    [(ngModel)]="model.email">
                 <div class="alert alert-danger"
                     *ngIf="error?.email">{{error.email}}</div>
             </div>
 
             <div class="form-group">
                 <button type="button" class="btn btn-primary"
-                    (click)="alumno.id?editar(): crear()">{{alumno.id?'Editar':'Crear'}}</button>
+                    (click)="model.id?editar(): crear()">{{model.id?'Editar':'Crear'}}</button>
             </div>
         </form>
     </div>
