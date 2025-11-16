@@ -14,6 +14,7 @@
             <thead>
                 <tr>
                     <th>id</th>
+                    <th>foto</th>
                     <th>nombre</th>
                     <th>apellido</th>
                     <th>email</th>
@@ -25,6 +26,12 @@
             <tbody>
                 <tr *ngFor="let alumno of lista">
                     <td>{{alumno.id}}</td>
+                    <td>
+                        <img 
+                            [src]="alumno.fotoHashCode?baseEndpoint+'/uploads/img/'+alumno.id+'?fotoHashCode='+alumno.fotoHashCode:'/assets/images/no-foto.png'"
+                            class="img-thumbnail rounded"
+                            style="width: 64px;cursor: pointer;"> 
+                    </td>
                     <td>{{alumno.nombre}}</td>
                     <td>{{alumno.apellido}}</td>
                     <td>{{alumno.email}}</td>
@@ -52,8 +59,7 @@
             (page)="paginar($event)"
             aria-label="Select page"
             showFirstLastButtons
-            class="float-left mx-2"
-            >
+            class="float-left mx-2">
         </mat-paginator>
 
     </div>
