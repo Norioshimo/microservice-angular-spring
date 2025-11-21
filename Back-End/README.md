@@ -1,5 +1,11 @@
-Ejecutar para instalar los paquetes
-mvn clean install -U
+## Levantar Back End
 
-Crear microservices con https://start.spring.io/
-disenho de banner https://devops.datenkollektiv.de/banner.txt/index.html
+Ejecutar el pom.xml principal: 
+```
+mvn clean install -U
+```
+
+Levantar cada proyecto en forma manual
+```
+mvn spring-boot:run
+```
